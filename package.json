@@ -1,0 +1,52 @@
+{
+  "name": "dynamic-redirect",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pilotpirxie/dynamic-redirect.git",
+  "author": "pilotpirxie <10637666+pilotpirxie@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@mikro-orm/core": "^5.1.5",
+    "@mikro-orm/postgresql": "^5.1.5",
+    "dayjs": "^1.11.3",
+    "express": "^4.18.1",
+    "joi": "^17.6.0"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^5.1.5",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.41",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  },
+  "scripts": {
+    "prod": "node ./dist/app.js",
+    "build": "tsc",
+    "dev": "nodemon",
+    "eslint": "./node_modules/.bin/eslint .",
+    "fix": "./node_modules/.bin/eslint --fix ."
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts, html",
+    "ignore": [
+      "src/public"
+    ],
+    "exec": "ts-node ./src/app.ts --project tsconfig.json"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
+  }
+}

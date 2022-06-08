@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2021",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./src",
+    "typeRoots" : ["./src/types", "./node_modules/@types"]
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
