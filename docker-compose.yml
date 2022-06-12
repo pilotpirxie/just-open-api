@@ -7,8 +7,8 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: dynamicdb
-      POSTGRES_USER: dynamicuser
+      POSTGRES_DB: justopendb
+      POSTGRES_USER: justopenuser
       POSTGRES_PASSWORD: mysecretpassword
 
   adminer:

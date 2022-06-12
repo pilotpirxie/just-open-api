@@ -1,21 +1,21 @@
 {
-  "name": "dynamic-redirect",
+  "name": "just-open-api",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/pilotpirxie/dynamic-redirect.git",
+  "repository": "https://github.com/pilotpirxie/just-open-api.git",
   "author": "pilotpirxie <10637666+pilotpirxie@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@mikro-orm/core": "^5.1.5",
-    "@mikro-orm/postgresql": "^5.1.5",
+    "@mikro-orm/core": "^5.2.0",
+    "@mikro-orm/postgresql": "^5.2.0",
     "dayjs": "^1.11.3",
     "express": "^4.18.1",
     "joi": "^17.6.0"
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^5.1.5",
+    "@mikro-orm/cli": "^5.2.0",
     "@types/express": "^4.17.13",
-    "@types/node": "^17.0.41",
+    "@types/node": "^17.0.42",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "eslint": "^7.32.0 || ^8.2.0",
@@ -30,7 +30,8 @@
     "build": "tsc",
     "dev": "nodemon",
     "eslint": "./node_modules/.bin/eslint .",
-    "fix": "./node_modules/.bin/eslint --fix ."
+    "fix": "./node_modules/.bin/eslint --fix .",
+    "schema:update": "npx mikro-orm schema:update --run"
   },
   "nodemonConfig": {
     "watch": [

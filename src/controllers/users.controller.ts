@@ -1,14 +1,20 @@
 import {
   NextFunction, Request, Response, Router,
 } from 'express';
+import Joi from 'joi';
+import validation from '../middlewares/validation';
 
 const router = Router();
 
-router.get('/', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/:letter', validation({
+  query: {
+    letter: Joi.string().min(1).required(),
+  },
+}), async (req, res, next) => {
   try {
     const users = await req.db.users.find({
       name: {
-        $like: '%a%',
+        $like: `%${req.params.letter}%`,
       },
     }, {
       fields: ['name'],

@@ -4,8 +4,8 @@ import { User } from './entities';
 
 const options: Options<PostgreSqlDriver> = {
   type: 'postgresql',
-  dbName: 'dynamicdb',
-  user: 'dynamicuser',
+  dbName: 'justopendb',
+  user: 'justopenuser',
   password: 'mysecretpassword',
   host: 'localhost',
   port: 5432,
