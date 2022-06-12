@@ -25,5 +25,6 @@ module.exports = {
     'import/no-cycle': 'off',
     'no-param-reassign': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-unresolved': 'off',
   },
 };

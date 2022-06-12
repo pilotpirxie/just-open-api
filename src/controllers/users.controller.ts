@@ -2,19 +2,38 @@ import {
   NextFunction, Request, Response, Router,
 } from 'express';
 import Joi from 'joi';
+import { ParamsDictionary, Query } from 'express-serve-static-core';
 import validation from '../middlewares/validation';
 
 const router = Router();
 
-router.get('/:letter', validation({
+export type RequestPayload = { body?: object, params?: object, query?: object };
+
+export interface TypedRequest<A extends RequestPayload> extends Request {
+  body: Required<A['body']>,
+  params: Required<A['params']> & Omit<ParamsDictionary, any>,
+  query: Required<A['query']> & Omit<Query, any>
+}
+
+router.get('/', validation({
   query: {
     letter: Joi.string().min(1).required(),
   },
-}), async (req, res, next) => {
+  body: {
+    abc: Joi.string().min(0).required(),
+  },
+}), async (req: TypedRequest<{
+  query: {
+    letter: string
+  },
+  body: {
+    abc: string,
+  }
+}>, res, next) => {
   try {
     const users = await req.db.users.find({
       name: {
-        $like: `%${req.params.letter}%`,
+        $like: `%${req.query.letter}${req.body.abc}%`,
       },
     }, {
       fields: ['name'],
