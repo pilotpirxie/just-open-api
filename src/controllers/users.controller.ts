@@ -1,21 +1,17 @@
-import {
-  NextFunction, Request, Response, Router,
-} from 'express';
+import { Router } from 'express';
 import Joi from 'joi';
 import validation from '../middlewares/validation';
 import { TypedRequest } from '../types/express';
 
 const router = Router();
 
-router.get('/', validation({
+const schema = {
   query: {
-    letter: Joi.string().min(1).required(),
+    letter: Joi.string().length(1).required(),
   },
-}), async (req: TypedRequest<{
-  query: {
-    letter: string
-  },
-}>, res, next) => {
+};
+
+router.get('/', validation(schema), async (req: TypedRequest<typeof schema>, res, next) => {
   try {
     const { letter } = req.query;
     const users = await req.db.users.find({
@@ -34,7 +30,7 @@ router.get('/', validation({
   }
 });
 
-router.post('/', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/', async (req, res, next) => {
   try {
     const user = await req.db.users.create({
       name: Date.now().toString(16),
